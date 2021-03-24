@@ -1,0 +1,93 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="759">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="20 8 20 8" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="30" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TabControl HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="751">
+            <TabItem Header="Пользователь">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="712*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid AutoGenerateColumns="False" x:Name="userGrid" RenderTransformOrigin="0.497,0.45" Margin="0,0,0,56" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding name}" Header="Имя" Width="150" />
+                            <DataGridTextColumn Binding="{Binding lastName}" Header="Фамилия" Width="150"/>
+                            <DataGridTextColumn Binding="{Binding patronymic}" Header="Отчество" Width="150"/>
+                            <DataGridTextColumn Binding="{Binding phone}" Header="Номер" Width="150">
+                                <DataGridTextColumn.EditingElementStyle>
+                                    <Style TargetType="{x:Type TextBox}">
+                                        <Setter Property="MaxLength" Value="10"/>
+                                    </Style>
+                                </DataGridTextColumn.EditingElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding email}" Header="Почта" Width="150"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="190,340,246,0" Width="276" Grid.Column="1">
+                        <Button x:Name="updateButton" Content="Обновить" Click="updateButton_Click" />
+                        <Button x:Name="deleteButton" Content="Удалить" Click="deleteButton_Click" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Реелтор">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="712*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid AutoGenerateColumns="False" x:Name="realtorGrid" RenderTransformOrigin="0.497,0.45" Margin="0,0,0,56" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding name}" Header="Имя" Width="150" />
+                            <DataGridTextColumn Binding="{Binding lastName}" Header="Фамилия" Width="150"/>
+                            <DataGridTextColumn Binding="{Binding patronymic}" Header="Отчество" Width="150"/>
+                            <DataGridTextColumn Binding="{Binding procent}" Header="Процент" Width="150"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="190,340,246,0" Width="276" Grid.Column="1">
+                        <Button x:Name="updateRealtorButton" Content="Обновить" Click="updateRealtorButton_Click" />
+                        <Button x:Name="deleteRealtorButton" Content="Удалить" Click="deleteRealtorButton_Click" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Поиск">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="167*"/>
+                        <ColumnDefinition Width="31*"/>
+                        <ColumnDefinition Width="547*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="110,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="128" Grid.ColumnSpan="3"/>
+                    <Label Content="Фамилия" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" Width="100"/>
+                    <Label Content="Имя" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.56,1.154"/>
+                    <Label Content="Отчетсво" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.56,1.154"/>
+                    <TextBox x:Name="lastName" HorizontalAlignment="Left" Height="23" Margin="110,61,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="128" Grid.ColumnSpan="3"/>
+                    <TextBox x:Name="patronymic" HorizontalAlignment="Left" Height="23" Margin="110,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="128" Grid.ColumnSpan="3"/>
+                    <DataGrid x:Name="leviGrid" HorizontalAlignment="Left" Height="391" Margin="99,0,0,0" VerticalAlignment="Top" Width="448" Grid.Column="2">
+                        <DataGrid.Columns>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Content="Поиск" HorizontalAlignment="Left" Margin="110,140,0,0" VerticalAlignment="Top" Width="109" Click="Button_Click" Grid.ColumnSpan="3"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
